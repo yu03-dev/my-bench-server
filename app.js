@@ -11,12 +11,13 @@ app.use(cors({
   origin: process.env.FRONTEND_URL || "http://localhost:8080",
   credentials: true
 }));
+
 app.use(express.json())
 
 // authorization
 require("./config/passport")(app);
 
-// ルーティング
+// routes
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/mypage', require('./routes/mypage'))
 // app.use('/api/history', require('./routes/history'))
