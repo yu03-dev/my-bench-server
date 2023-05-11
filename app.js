@@ -19,7 +19,7 @@ require("./config/passport")(app);
 // ルーティング
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/mypage', require('./routes/mypage'))
-app.use('/api/history', require('./routes/history'))
+// app.use('/api/history', require('./routes/history'))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

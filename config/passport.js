@@ -2,7 +2,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const session = require("express-session");
-const secret = process.env.SESSION_KEY
+const secret = process.env.SESSION_SECRET
 const { User } = require('../models');
 
 module.exports = function (app) {
