@@ -59,7 +59,8 @@ module.exports = function (app) {
       resave: false,
       saveUninitialized: false,
       cookie: {
-        maxAge: 30 * 60 * 1000 // 30 minutes
+        maxAge: 30 * 60 * 1000, // 30 minutes
+        name: 'sessionId'
       },
     })
   );
