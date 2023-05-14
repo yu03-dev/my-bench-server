@@ -3,10 +3,10 @@ const app = express()
 const port = process.env.PORT || 3000
 const createError = require('http-errors');
 const cors = require('cors')
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 
 
-app.use(cookieParser())
+// app.use(cookieParser())
 app.use(cors({
   origin: process.env.BASE_URL || "http://localhost:4173",// preview
   credentials: true

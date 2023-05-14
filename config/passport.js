@@ -52,6 +52,9 @@ module.exports = function (app) {
 
   sessionStore.sync()
 
+  if (process.env.NODE_ENV == 'production') {
+    app.set('trust proxy', 1)
+  }
   app.use(
     session({
       secret: secret,
@@ -61,8 +64,9 @@ module.exports = function (app) {
       cookie: {
         maxAge: 30 * 60 * 1000, // 30 minutes
         name: 'sessionId',
-        secure: true,
-        httpOnly: true
+        secure: process.env.NODE_ENV == 'production' ? true : false,
+        httpOnly: true,
+        sameSite: "none"
       },
     })
   );
