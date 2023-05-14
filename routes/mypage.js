@@ -89,7 +89,7 @@ router.post('/', async function(req, res) {
         success: false,
         message: 'レコードの作成に失敗しました',
         user: user,
-        records: null,
+        records: await getRecord(user) || null,
         error: null,
         isAuth: isAuth
       });
@@ -132,7 +132,7 @@ router.put('/:id', async function(req, res) {
         success: false,
         message: 'レコードを更新できませんでした',
         user: user,
-        records: null,
+        records: await getRecord(user) || null,
         error: err,
         isAuth: isAuth
       });
@@ -172,7 +172,7 @@ router.delete('/:id', async function(req, res) {
         success: false,
         message: 'レコードの削除に失敗しました',
         user: user,
-        records: null,
+        records: await getRecord(user) || null,
         error: err,
         isAuth: isAuth
       });

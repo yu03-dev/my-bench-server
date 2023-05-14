@@ -75,7 +75,7 @@ router.post('/signup', async function(req, res) {
         res.json({
           success: true,
           message: '正常にサインアップできました',
-          user: newUser,
+          user: null,
           records: null,
           error: null,
           isAuth: false
