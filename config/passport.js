@@ -3,7 +3,8 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const secret = process.env.SESSION_SECRET
-const { User } = require('../models');
+const { User, sequelize } = require('../models');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 module.exports = function (app) {
   passport.serializeUser(function (user, done) {
@@ -38,7 +39,6 @@ module.exports = function (app) {
             return done(null, false, { message: "Invalid User" });
           }
         } catch (err) {
-          console.log('hello')
           console.error(err);
           return done(null, false, { message: err.toString() });
         }
@@ -46,13 +46,20 @@ module.exports = function (app) {
     )
   );
 
+  const sessionStore = new SequelizeStore({
+    db: sequelize,
+  });
+
+  sessionStore.sync()
+
   app.use(
     session({
       secret: secret,
+      store: sessionStore,
       resave: false,
       saveUninitialized: false,
       cookie: {
-        maxAge: 24 * 60 * 60 * 1000, // 24 hours
+        maxAge: 30 * 60 * 1000 // 30 minutes
       },
     })
   );
