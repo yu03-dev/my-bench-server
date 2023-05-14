@@ -60,7 +60,9 @@ module.exports = function (app) {
       saveUninitialized: false,
       cookie: {
         maxAge: 30 * 60 * 1000, // 30 minutes
-        name: 'sessionId'
+        name: 'sessionId',
+        secure: true,
+        httpOnly: true
       },
     })
   );
