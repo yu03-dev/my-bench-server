@@ -5,8 +5,7 @@ const createError = require('http-errors');
 const cors = require('cors')
 
 app.use(cors({
-  // preview: "http://localhost:4173"
-  origin: process.env.BASE_URL || "http://localhost:8080",
+  origin: process.env.BASE_URL || "http://localhost:4173",
   credentials: true
 }));
 
