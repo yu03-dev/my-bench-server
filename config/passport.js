@@ -66,7 +66,7 @@ module.exports = function (app) {
         name: 'sessionId',
         secure: process.env.NODE_ENV == 'production' ? true : false,
         httpOnly: true,
-        sameSite: "none"
+        // sameSite: "none"
       },
     })
   );
